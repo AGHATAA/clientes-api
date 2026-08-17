@@ -1,8 +1,8 @@
 # API de Clientes
 
-API REST desenvolvida para cadastro e gerenciamento de clientes, utilizando Node.js, TypeScript, Express, MongoDB Atlas e Mongoose.
+API REST desenvolvida para cadastro e gerenciamento de clientes, utilizando **Node.js, TypeScript, Express, MongoDB Atlas e Mongoose**.
 
-O projeto foi desenvolvido como desafio técnico, com foco em organização de código, validação de dados, regras de negócio, integração com banco de dados, tratamento de erros e documentação.
+O projeto foi desenvolvido como desafio técnico, com foco em organização de código, validação de dados, regras de negócio, integração com banco de dados, tratamento de erros e testes da API.
 
 ## Tecnologias utilizadas
 
@@ -51,19 +51,14 @@ src/
 ├── app.ts
 └── server.ts
 
-postman/
-├── clientes-api.postman_collection.json
-└── clientes-api.postman_environment.json
-
 .env
 .env.example
 .gitignore
 package.json
 tsconfig.json
-README.md
 ```
 
-A aplicação utiliza separação de responsabilidades entre rotas, controllers, services, models, validators e middlewares.
+A aplicação utiliza separação de responsabilidades entre **rotas, controllers, services, models, validators e middlewares**.
 
 ## Configuração do ambiente
 
@@ -72,14 +67,19 @@ A aplicação utiliza separação de responsabilidades entre rotas, controllers,
 * Node.js 20 ou superior
 * npm
 * Conta no MongoDB Atlas
-* MongoDB Atlas configurado para permitir a conexão da aplicação
+* Banco de dados MongoDB configurado para conexão com a aplicação
 
 ### Instalação
 
-Clone o repositório e entre na pasta do projeto:
+Clone o repositório:
 
 ```bash
-git clone URL_DO_REPOSITORIO
+git clone https://github.com/AGHATAA/clientes-api.git
+```
+
+Entre na pasta do projeto:
+
+```bash
 cd clientes-api
 ```
 
@@ -89,11 +89,11 @@ Instale as dependências:
 npm install
 ```
 
-### Variáveis de ambiente
+## Variáveis de ambiente
 
 Crie um arquivo `.env` na raiz do projeto.
 
-Utilize como referência o arquivo `.env.example`:
+Utilize o arquivo `.env.example` como referência:
 
 ```env
 PORT=3000
@@ -113,6 +113,8 @@ npm run dev
 ```
 
 ### Compilação
+
+Para gerar a versão compilada:
 
 ```bash
 npm run build
@@ -138,7 +140,7 @@ http://localhost:3000
 POST /clientes
 ```
 
-Exemplo:
+Exemplo de requisição:
 
 ```json
 {
@@ -192,7 +194,7 @@ GET /clientes?ativo=true
 GET /clientes?nome=joao
 ```
 
-A busca por nome não diferencia letras maiúsculas e minúsculas.
+A busca por nome não diferencia letras maiúsculas de minúsculas.
 
 ### Consultar cliente por ID
 
@@ -220,30 +222,9 @@ Exemplo:
 }
 ```
 
-Também é possível atualizar outros dados permitidos, respeitando as validações da API.
+Os campos permitidos podem ser atualizados respeitando as regras de validação da API.
 
-O CPF não pode ser alterado.
-
-Caso seja enviada uma tentativa de alteração:
-
-```json
-{
-  "cpf": "11144477735"
-}
-```
-
-A API retorna:
-
-```http
-400 Bad Request
-```
-
-```json
-{
-  "error": "CPF_INVALID_UPDATE",
-  "message": "O CPF do cliente não pode ser alterado."
-}
-```
+O CPF não pode ser alterado após o cadastro.
 
 ### Excluir cliente
 
@@ -276,7 +257,7 @@ Resposta de sucesso:
 * Obrigatório
 * Mínimo de 3 caracteres
 * Não aceita somente espaços
-* Espaços desnecessários no início e no fim são removidos
+* Espaços no início e no final são removidos
 
 ### E-mail
 
@@ -288,8 +269,7 @@ Resposta de sucesso:
 ### Telefone
 
 * Obrigatório
-* Deve possuir DDD
-* Aceita entre 10 e 13 números
+* Deve possuir entre 10 e 13 números
 * Aceita telefone com ou sem máscara
 * É armazenado somente com números
 
@@ -326,9 +306,9 @@ O complemento é opcional.
 
 ## Respostas de erro
 
-A API utiliza um formato padronizado para erros.
+A API utiliza respostas padronizadas para erros.
 
-Exemplo:
+Exemplo de conflito:
 
 ```json
 {
@@ -337,7 +317,7 @@ Exemplo:
 }
 ```
 
-Erro de validação:
+Exemplo de erro de validação:
 
 ```json
 {
@@ -352,20 +332,11 @@ Erro de validação:
 }
 ```
 
-Erro interno:
-
-```json
-{
-  "error": "INTERNAL_SERVER_ERROR",
-  "message": "Ocorreu um erro interno ao processar a solicitação."
-}
-```
-
-A API não retorna stack trace, credenciais, URI do MongoDB ou outras informações sensíveis ao consumidor.
+A API não deve retornar informações sensíveis, como credenciais, URI do MongoDB ou stack trace, nas respostas para o cliente.
 
 ## Códigos HTTP utilizados
 
-| Código | Utilização                                    |
+| Código | Descrição                                     |
 | ------ | --------------------------------------------- |
 | 200    | Consulta ou atualização realizada com sucesso |
 | 201    | Cliente criado com sucesso                    |
@@ -373,25 +344,13 @@ A API não retorna stack trace, credenciais, URI do MongoDB ou outras informaç�
 | 400    | Erro de validação ou regra de negócio         |
 | 404    | Cliente não encontrado                        |
 | 409    | CPF ou e-mail já cadastrado                   |
-| 500    | Erro interno não previsto                     |
+| 500    | Erro interno do servidor                      |
 
 ## Postman
 
-O projeto possui uma Collection do Postman para testar os principais cenários da API.
+O projeto foi testado utilizando o **Postman**.
 
-A Collection utiliza a variável:
-
-```text
-{{baseUrl}}
-```
-
-Com o seguinte valor:
-
-```text
-http://localhost:3000
-```
-
-Os cenários contemplados incluem:
+A Collection contém cenários para:
 
 * Cadastro de cliente válido
 * CPF inválido
@@ -411,6 +370,18 @@ Os cenários contemplados incluem:
 * Exclusão de cliente
 * Tentativa de exclusão de cliente inexistente
 
+A variável utilizada nas requisições é:
+
+```text
+{{baseUrl}}
+```
+
+Valor utilizado no ambiente local:
+
+```text
+http://localhost:3000
+```
+
 ## Decisões técnicas
 
 ### Separação de responsabilidades
@@ -423,11 +394,18 @@ A aplicação foi organizada separando responsabilidades entre:
 * `models`: representam os documentos do MongoDB
 * `routes`: definem os endpoints
 * `middlewares`: realizam o tratamento de erros
-* `config`: concentra configurações da aplicação
+* `config`: concentra as configurações da aplicação
+
+### Auditoria
+
+O model de cliente utiliza `timestamps: true` do Mongoose, permitindo o registro automático de:
+
+* `createdAt`
+* `updatedAt`
 
 ### Exclusão
 
-Foi adotada a exclusão física dos clientes, utilizando a remoção do documento no MongoDB.
+Foi adotada a exclusão física dos clientes, removendo o documento do MongoDB.
 
 ### Segurança
 
@@ -435,9 +413,19 @@ As credenciais do MongoDB são armazenadas em variáveis de ambiente.
 
 O arquivo `.env` está incluído no `.gitignore` e não deve ser publicado no repositório.
 
+## Validação do projeto
+
+A aplicação foi compilada com sucesso utilizando:
+
+```bash
+npm run build
+```
+
+Também foram realizados testes dos endpoints utilizando o Postman, incluindo cenários de sucesso, validação, conflito e recursos não encontrados.
+
 ## Melhorias futuras
 
-Como possíveis melhorias futuras:
+Possíveis melhorias futuras:
 
 * Documentação com Swagger/OpenAPI
 * Testes automatizados
@@ -445,8 +433,10 @@ Como possíveis melhorias futuras:
 * ESLint e Prettier
 * Docker e Docker Compose
 * Deploy da API em ambiente de nuvem
-* Implementação de testes automatizados na Collection do Postman
+* Testes automatizados na Collection do Postman
 
 ## Status do projeto
 
-Projeto desenvolvido como desafio técnico para avaliação de conhecimentos em desenvolvimento backend, API REST, TypeScript, MongoDB, organização de código e regras de negócio.
+**Concluído como desafio técnico.**
+
+Projeto desenvolvido para demonstrar conhecimentos em desenvolvimento backend, API REST, TypeScript, Node.js, MongoDB, organização de código, validação de dados e regras de negócio.
