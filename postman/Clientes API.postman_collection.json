@@ -10,32 +10,104 @@
     {
       "name": "01 - Cadastrar cliente válido",
       "request": {
-        "method": "GET",
-        "header": []
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nome\": \"Joao Santos\",\r\n  \"cpf\": \"39053344705\",\r\n  \"email\": \"joao.santos2026@email.com\",\r\n  \"telefone\": \"(11) 97777-1234\",\r\n  \"dataNascimento\": \"1998-08-15\",\r\n  \"ativo\": true,\r\n  \"endereco\": {\r\n    \"cep\": \"01001-000\",\r\n    \"logradouro\": \"Rua Augusta\",\r\n    \"numero\": \"150\",\r\n    \"complemento\": \"Apto 20\",\r\n    \"bairro\": \"Consolacao\",\r\n    \"cidade\": \"Sao Paulo\",\r\n    \"estado\": \"SP\"\r\n  }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/clientes",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes"
+          ]
+        }
       },
       "response": []
     },
     {
       "name": "02 - CPF inválido",
       "request": {
-        "method": "GET",
-        "header": []
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nome\": \"Cliente CPF Invalido\",\r\n  \"cpf\": \"12345678900\",\r\n  \"email\": \"cpf.invalido2026@email.com\",\r\n  \"telefone\": \"(11) 98888-1111\",\r\n  \"dataNascimento\": \"1995-05-10\",\r\n  \"ativo\": true,\r\n  \"endereco\": {\r\n    \"cep\": \"01001-000\",\r\n    \"logradouro\": \"Praca da Se\",\r\n    \"numero\": \"100\",\r\n    \"bairro\": \"Se\",\r\n    \"cidade\": \"Sao Paulo\",\r\n    \"estado\": \"SP\"\r\n  }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/clientes",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes"
+          ]
+        }
       },
       "response": []
     },
     {
       "name": "03 - CPF duplicado",
       "request": {
-        "method": "GET",
-        "header": []
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nome\": \"Outro Cliente\",\r\n  \"cpf\": \"12345678909\",\r\n  \"email\": \"outro.cpf@email.com\",\r\n  \"telefone\": \"(11) 97777-7777\",\r\n  \"dataNascimento\": \"1995-05-10\",\r\n  \"ativo\": true,\r\n  \"endereco\": {\r\n    \"cep\": \"01001-000\",\r\n    \"logradouro\": \"Praça da Sé\",\r\n    \"numero\": \"300\",\r\n    \"bairro\": \"Sé\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"estado\": \"SP\"\r\n  }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/clientes",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes"
+          ]
+        }
       },
       "response": []
     },
     {
       "name": "04 - E-mail inválido",
       "request": {
-        "method": "GET",
-        "header": []
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nome\": \"Cliente Email Inválido\",\r\n  \"cpf\": \"98765432100\",\r\n  \"email\": \"email-invalido\",\r\n  \"telefone\": \"(11) 96666-6666\",\r\n  \"dataNascimento\": \"1995-05-10\",\r\n  \"ativo\": true,\r\n  \"endereco\": {\r\n    \"cep\": \"01001-000\",\r\n    \"logradouro\": \"Praça da Sé\",\r\n    \"numero\": \"400\",\r\n    \"bairro\": \"Sé\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"estado\": \"SP\"\r\n  }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/clientes",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes"
+          ]
+        }
       },
       "response": []
     },
@@ -43,31 +115,94 @@
       "name": "05 - Listar clientes",
       "request": {
         "method": "GET",
-        "header": []
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/clientes",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes"
+          ]
+        }
       },
       "response": []
     },
     {
       "name": "06 - E-mail duplicado",
       "request": {
-        "method": "GET",
-        "header": []
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nome\": \"Cliente Email Duplicado\",\r\n  \"cpf\": \"98765432100\",\r\n  \"email\": \"maria.oliveira2026@email.com\",\r\n  \"telefone\": \"(11) 95555-5555\",\r\n  \"dataNascimento\": \"1995-05-10\",\r\n  \"ativo\": true,\r\n  \"endereco\": {\r\n    \"cep\": \"01001-000\",\r\n    \"logradouro\": \"Praça da Sé\",\r\n    \"numero\": \"500\",\r\n    \"bairro\": \"Sé\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"estado\": \"SP\"\r\n  }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/clientes",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes"
+          ]
+        }
       },
       "response": []
     },
     {
       "name": "07 - Cliente menor de 18 anos",
       "request": {
-        "method": "GET",
-        "header": []
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nome\": \"Cliente Menor\",\r\n  \"cpf\": \"52998224725\",\r\n  \"email\": \"menor.teste@email.com\",\r\n  \"telefone\": \"(11) 94444-4444\",\r\n  \"dataNascimento\": \"2015-05-10\",\r\n  \"ativo\": true,\r\n  \"endereco\": {\r\n    \"cep\": \"01001-000\",\r\n    \"logradouro\": \"Praça da Sé\",\r\n    \"numero\": \"600\",\r\n    \"bairro\": \"Sé\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"estado\": \"SP\"\r\n  }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/clientes",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes"
+          ]
+        }
       },
       "response": []
     },
     {
       "name": "08 - Data de nascimento futura",
       "request": {
-        "method": "GET",
-        "header": []
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nome\": \"Cliente Data Futura\",\r\n  \"cpf\": \"71439459001\",\r\n  \"email\": \"data.futura@email.com\",\r\n  \"telefone\": \"(11) 93333-3333\",\r\n  \"dataNascimento\": \"2030-05-10\",\r\n  \"ativo\": true,\r\n  \"endereco\": {\r\n    \"cep\": \"01001-000\",\r\n    \"logradouro\": \"Praça da Sé\",\r\n    \"numero\": \"700\",\r\n    \"bairro\": \"Sé\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"estado\": \"SP\"\r\n  }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/clientes",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes"
+          ]
+        }
       },
       "response": []
     },
@@ -75,7 +210,26 @@
       "name": "09 - Listar com paginação",
       "request": {
         "method": "GET",
-        "header": []
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/clientes?page=1&limit=2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "2"
+            }
+          ]
+        }
       },
       "response": []
     },
@@ -83,7 +237,22 @@
       "name": "10 - Listar por status",
       "request": {
         "method": "GET",
-        "header": []
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/clientes?ativo=true",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes"
+          ],
+          "query": [
+            {
+              "key": "ativo",
+              "value": "true"
+            }
+          ]
+        }
       },
       "response": []
     },
@@ -91,7 +260,17 @@
       "name": "11 - Consultar cliente por ID",
       "request": {
         "method": "GET",
-        "header": []
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/clientes/6a82489d2b6f7e60acf50e2c",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes",
+            "6a82489d2b6f7e60acf50e2c"
+          ]
+        }
       },
       "response": []
     },
@@ -99,47 +278,134 @@
       "name": "12 - Consultar cliente inexistente",
       "request": {
         "method": "GET",
-        "header": []
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/clientes/aaaaaaaaaaaaaaaaaaaaaaaa",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes",
+            "aaaaaaaaaaaaaaaaaaaaaaaa"
+          ]
+        }
       },
       "response": []
     },
     {
       "name": "13 - Atualizar nome",
       "request": {
-        "method": "GET",
-        "header": []
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nome\": \"Maria Oliveira Atualizada\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/clientes/6a82489d2b6f7e60acf50e2c",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes",
+            "6a82489d2b6f7e60acf50e2c"
+          ]
+        }
       },
       "response": []
     },
     {
       "name": "14 - Atualizar e-mail",
       "request": {
-        "method": "GET",
-        "header": []
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"maria.atualizada2026@email.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/clientes/6a82489d2b6f7e60acf50e2c",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes",
+            "6a82489d2b6f7e60acf50e2c"
+          ]
+        }
       },
       "response": []
     },
     {
       "name": "15 - Tentativa de alteração do CPF",
       "request": {
-        "method": "GET",
-        "header": []
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"cpf\": \"11144477735\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/clientes/6a82489d2b6f7e60acf50e2c",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes",
+            "6a82489d2b6f7e60acf50e2c"
+          ]
+        }
       },
       "response": []
     },
     {
       "name": "16 - Excluir cliente",
       "request": {
-        "method": "GET",
-        "header": []
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/clientes/6a82489d2b6f7e60acf50e2c",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes",
+            "6a82489d2b6f7e60acf50e2c"
+          ]
+        }
       },
       "response": []
     },
     {
       "name": "17 - Excluir cliente inexistente",
       "request": {
-        "method": "GET",
-        "header": []
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/clientes/6a82489d2b6f7e60acf50e2c",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes",
+            "6a82489d2b6f7e60acf50e2c"
+          ]
+        }
       },
       "response": []
     }
