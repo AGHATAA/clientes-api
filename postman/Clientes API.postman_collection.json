@@ -408,6 +408,29 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "18 - Buscar cliente por nome",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/clientes?nome=joao",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "clientes"
+          ],
+          "query": [
+            {
+              "key": "nome",
+              "value": "joao"
+            }
+          ]
+        }
+      },
+      "response": []
     }
   ],
   "event": [
