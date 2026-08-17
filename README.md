@@ -1,6 +1,6 @@
 # API de Clientes
 
-API REST desenvolvida para cadastro e gerenciamento de clientes, utilizando **Node.js, TypeScript, Express, MongoDB Atlas e Mongoose**.
+API REST desenvolvida para cadastro e gerenciamento de clientes utilizando **Node.js, TypeScript, Express, MongoDB Atlas e Mongoose**.
 
 O projeto foi desenvolvido como desafio técnico, com foco em organização de código, validação de dados, regras de negócio, integração com banco de dados, tratamento de erros e testes da API.
 
@@ -51,6 +51,9 @@ src/
 ├── app.ts
 └── server.ts
 
+postman/
+└── API de clientes.postman_collection.json
+
 .env
 .env.example
 .gitignore
@@ -58,7 +61,7 @@ package.json
 tsconfig.json
 ```
 
-A aplicação utiliza separação de responsabilidades entre **rotas, controllers, services, models, validators e middlewares**.
+A aplicação utiliza separação de responsabilidades entre **routes, controllers, services, models, validators e middlewares**.
 
 ## Configuração do ambiente
 
@@ -77,7 +80,7 @@ Clone o repositório:
 git clone https://github.com/AGHATAA/clientes-api.git
 ```
 
-Entre na pasta do projeto:
+Entre na pasta:
 
 ```bash
 cd clientes-api
@@ -93,7 +96,7 @@ npm install
 
 Crie um arquivo `.env` na raiz do projeto.
 
-Utilize o arquivo `.env.example` como referência:
+Utilize o `.env.example` como referência:
 
 ```env
 PORT=3000
@@ -102,7 +105,7 @@ MONGODB_URI=
 
 Preencha `MONGODB_URI` com a string de conexão do MongoDB Atlas.
 
-> O arquivo `.env` não deve ser publicado no GitHub.
+> O arquivo `.env` contém informações sensíveis e não deve ser publicado no GitHub.
 
 ## Execução
 
@@ -113,8 +116,6 @@ npm run dev
 ```
 
 ### Compilação
-
-Para gerar a versão compilada:
 
 ```bash
 npm run build
@@ -140,7 +141,7 @@ http://localhost:3000
 POST /clientes
 ```
 
-Exemplo de requisição:
+Exemplo:
 
 ```json
 {
@@ -164,7 +165,7 @@ Exemplo de requisição:
 
 Resposta de sucesso:
 
-```http
+```text
 201 Created
 ```
 
@@ -204,7 +205,7 @@ GET /clientes/:id
 
 Caso o cliente não seja encontrado:
 
-```http
+```text
 404 Not Found
 ```
 
@@ -236,7 +237,7 @@ A aplicação utiliza exclusão física do documento no MongoDB.
 
 Resposta de sucesso:
 
-```http
+```text
 204 No Content
 ```
 
@@ -304,6 +305,21 @@ O estado deve possuir exatamente duas letras e é armazenado em letras maiúscul
 
 O complemento é opcional.
 
+## Auditoria
+
+O model de cliente utiliza:
+
+```text
+timestamps: true
+```
+
+Com isso, o Mongoose registra automaticamente:
+
+* `createdAt`
+* `updatedAt`
+
+O campo `updatedAt` é atualizado quando os dados do cliente são modificados.
+
 ## Respostas de erro
 
 A API utiliza respostas padronizadas para erros.
@@ -332,7 +348,7 @@ Exemplo de erro de validação:
 }
 ```
 
-A API não deve retornar informações sensíveis, como credenciais, URI do MongoDB ou stack trace, nas respostas para o cliente.
+A API não deve retornar informações sensíveis, como credenciais, URI do MongoDB ou stack trace.
 
 ## Códigos HTTP utilizados
 
@@ -348,9 +364,15 @@ A API não deve retornar informações sensíveis, como credenciais, URI do Mong
 
 ## Postman
 
-O projeto foi testado utilizando o **Postman**.
+A API foi testada utilizando o **Postman**.
 
-A Collection contém cenários para:
+A Collection exportada está disponível no diretório:
+
+```text
+postman/API de clientes.postman_collection.json
+```
+
+Os principais cenários testados incluem:
 
 * Cadastro de cliente válido
 * CPF inválido
@@ -370,13 +392,13 @@ A Collection contém cenários para:
 * Exclusão de cliente
 * Tentativa de exclusão de cliente inexistente
 
-A variável utilizada nas requisições é:
+A Collection utiliza a variável:
 
 ```text
 {{baseUrl}}
 ```
 
-Valor utilizado no ambiente local:
+Com o seguinte valor no ambiente local:
 
 ```text
 http://localhost:3000
@@ -395,13 +417,6 @@ A aplicação foi organizada separando responsabilidades entre:
 * `routes`: definem os endpoints
 * `middlewares`: realizam o tratamento de erros
 * `config`: concentra as configurações da aplicação
-
-### Auditoria
-
-O model de cliente utiliza `timestamps: true` do Mongoose, permitindo o registro automático de:
-
-* `createdAt`
-* `updatedAt`
 
 ### Exclusão
 
